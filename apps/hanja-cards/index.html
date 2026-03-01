@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KLN34C9H');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4급 한자, 예서와 함께 | 한국어문회 4급 한자 1000자 학습</title>
+
+    <!-- Basic SEO Meta Tags -->
+    <meta name="description" content="한국어문회 4급 배정 한자 1000자를 학습하고, 퀴즈를 풀고, 획순에 따라 직접 써볼 수 있는 완벽 무료 온라인 한자 학습 서비스입니다.">
+    <meta name="keywords" content="한자, 4급 한자, 한자능력검정시험, 한자 공부, 한자 쓰기, 예서, 온라인 한자 학습, 무료 한자 어플">
+    <meta name="author" content="한자카드">
+    <link rel="canonical" href="https://hanja-cards.pages.dev/">
+
+    <!-- Open Graph (Facebook, Kakao, etc.) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hanja-cards.pages.dev/">
+    <meta property="og:title" content="4급 한자, 예서와 함께">
+    <meta property="og:description" content="한국어문회 4급 배정 한자 1000자를 학습하고, 퀴즈를 풀고, 획순에 따라 직접 써보세요.">
+    <!-- Replace with an actual thumbnail image URL if you have one, or a relative path from the domain root -->
+    <meta property="og:image" content="https://hanja-cards.pages.dev/imgs/1-한일.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://hanja-cards.pages.dev/">
+    <meta name="twitter:title" content="4급 한자, 예서와 함께">
+    <meta name="twitter:description" content="한국어문회 4급 배정 한자 1000자를 학습하고, 퀴즈를 풀고, 획순에 따라 직접 써보세요.">
+    <meta name="twitter:image" content="https://hanja-cards.pages.dev/imgs/1-한일.png">
+
+    <!-- JSON-LD Structured Data for Rich Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "4급 한자, 예서와 함께",
+      "description": "한국어문회 4급 배정 한자 1000자를 학습하고, 퀴즈를 풀며, 쓰는 순서를 연습할 수 있는 무료 플래시카드 앱입니다.",
+      "url": "https://hanja-cards.pages.dev/",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "KRW"
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5977FG9FPG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-5977FG9FPG');
+    </script>
+
+    <!-- Supabase for Custom Detailed Analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="analytics.js"></script>
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KLN34C9H" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="main-header" style="position: relative;">
+            <h1>🀄 4급 한자, 예서와 함께</h1>
+            <button id="theme-toggle" class="theme-toggle-btn" title="다크모드 전환">🌙</button>
+            <nav>
+                <button id="nav-grid" class="nav-btn active" onclick="app.changeMode('grid')">목록</button>
+                <button id="nav-study" class="nav-btn" onclick="app.changeMode('study')">학습</button>
+                <button id="nav-write" class="nav-btn" onclick="app.changeMode('write')">쓰기</button>
+                <button id="nav-quiz" class="nav-btn" onclick="app.changeMode('quiz')">퀴즈</button>
+            </nav>
+        </header>
+
+        <main>
+            <!-- View: Grid List -->
+            <section id="view-grid" class="view active">
+                <div class="grid-controls">
+                    <div class="search-wrapper">
+                        <input type="text" id="hanja-search" class="hanja-search" placeholder="한자·훈·음 검색" />
+                        <button id="clear-search" class="clear-search-btn hidden" aria-label="검색어 지우기">&times;</button>
+                    </div>
+                    <p>총 <span id="total-count">0</span>개 / <span id="filtered-count">0</span>개</p>
+                </div>
+                <div id="grid-list" class="grid-list">
+                    <!-- Grid items will be injected here -->
+                </div>
+            </section>
+
+            <!-- View: Study Mode -->
+            <section id="view-study" class="view hidden">
+                <div class="study-container">
+                    <div class="study-progress">
+                        <span id="curr-num">1</span> / <span id="total-num">1000</span>
+                    </div>
+
+                    <div class="card-scene">
+                        <div id="main-card" class="card" onclick="app.flipCard()">
+                            <div class="card-face card-front">
+                                <div class="card-content">
+                                    <span id="study-hanja" class="big-hanja">?</span>
+                                    <p class="hint-text">터치해서 뜻과 음 확인하기</p>
+                                </div>
+                            </div>
+                            <div class="card-face card-back">
+                                <div class="card-back-content">
+                                    <div class="cb-top">
+                                        <span id="study-info-back" class="meaning-sound-back">...</span>
+                                    </div>
+                                    <div class="cb-center">
+                                        <span id="study-hanja-back" class="overlay-hanja-back">?</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="study-controls">
+                        <button class="control-btn prev" onclick="app.prevCard()">Example Prev</button>
+                        <!-- Icon handled in CSS/JS or text -->
+                        <button id="btn-play" class="control-btn play" onclick="app.toggleAutoPlay()">▶ 자동재생</button>
+                        <button class="control-btn next" onclick="app.nextCard()">Example Next</button>
+                    </div>
+
+                    <div class="speed-control hidden" id="speed-control-panel">
+                        <label for="speed-range">속도:</label>
+                        <input type="range" id="speed-range" min="500" max="3000" step="500" value="2000">
+                        <span id="speed-display">2초</span>
+                    </div>
+                </div>
+            </section>
+            <!-- View: Quiz Mode -->
+            <section id="view-quiz" class="view hidden">
+                <div class="quiz-container">
+                    <div class="quiz-header">
+                        <h2>이 한자의 뜻과 음은?</h2>
+                        <div class="score-board">점수: <span id="score">0</span></div>
+                    </div>
+
+                    <div class="quiz-card">
+                        <div class="quiz-q-wrapper">
+                            <span id="quiz-q" class="quiz-hanja">?</span>
+                        </div>
+                    </div>
+
+                    <div id="quiz-feedback" class="quiz-feedback"></div>
+
+                    <div id="quiz-options" class="quiz-options">
+                        <!-- Options injected here -->
+                    </div>
+
+                    <button class="next-quiz-btn" onclick="app.startQuiz()">다음 문제 &rarr;</button>
+                </div>
+            </section>
+
+            <!-- View: Write Mode -->
+            <section id="view-write" class="view hidden">
+                <div class="write-container">
+                    <div class="write-header">
+                        <h2 id="write-info" class="write-info">...</h2>
+                    </div>
+
+                    <div class="writers-wrapper">
+                        <div class="writer-box">
+                            <p class="box-label">쓰는 순서</p>
+                            <div id="demo-wrapper" class="writer-wrapper responsive-demo">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" class="writer-bg">
+                                    <line x1="0" y1="0" x2="180" y2="180" stroke="#e2e8f0" stroke-width="2" />
+                                    <line x1="180" y1="0" x2="0" y2="180" stroke="#e2e8f0" stroke-width="2" />
+                                    <line x1="90" y1="0" x2="90" y2="180" stroke="#e2e8f0" stroke-width="2" />
+                                    <line x1="0" y1="90" x2="180" y2="90" stroke="#e2e8f0" stroke-width="2" />
+                                </svg>
+                                <div id="hanzi-demo-target" class="writer-target"></div>
+                            </div>
+                        </div>
+                        <div class="writer-box quiz-box">
+                            <p class="box-label">따라쓰기</p>
+                            <div id="quiz-wrapper" class="writer-wrapper responsive-quiz">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" class="writer-bg">
+                                    <line x1="0" y1="0" x2="180" y2="180" stroke="#e2e8f0" stroke-width="2" />
+                                    <line x1="180" y1="0" x2="0" y2="180" stroke="#e2e8f0" stroke-width="2" />
+                                    <line x1="90" y1="0" x2="90" y2="180" stroke="#e2e8f0" stroke-width="2" />
+                                    <line x1="0" y1="90" x2="180" y2="90" stroke="#e2e8f0" stroke-width="2" />
+                                </svg>
+                                <div id="hanzi-quiz-target" class="writer-target"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Success Message (Floating text) -->
+                    <div id="write-success-msg" class="success-floating-text hidden">
+                        <h3 class="success-title">🎉 참 잘했습니다! 🎉</h3>
+                    </div>
+
+                    <!-- 하단 네비게이션 -->
+                    <div class="study-controls write-nav-controls" id="write-nav-controls">
+                        <div class="nav-page-info">
+                            <span class="curr-num" id="write-curr">1</span> / <span class="total-num"
+                                id="write-total">100</span>
+                        </div>
+                        <div class="write-nav-buttons">
+                            <button class="write-btn secondary-btn" onclick="app.prevWriteCard()">이전 한자</button>
+                            <button class="write-btn" onclick="app.quizStrokes()">다시쓰기</button>
+                            <button class="write-btn secondary-btn" onclick="app.nextWriteCard()">다음 한자</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+    </div>
+
+    <!-- HanziWriter script before local scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
+    <script src="hanja-data.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
